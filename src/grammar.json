@@ -1,6 +1,6 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
-  "name": "ranger_rc_conf",
+  "name": "rangerrc",
   "rules": {
     "source_file": {
       "type": "REPEAT",
