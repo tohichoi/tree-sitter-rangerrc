@@ -1,6 +1,6 @@
 // grammar.js
 module.exports = grammar({
-  name: 'ranger_rc_conf',
+  name: 'rangerrc',
 
   rules: {
     // 파일은 여러 줄(Line)로 구성됨
