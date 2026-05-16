@@ -13,7 +13,7 @@ npx tree-sitter generate
 ```toml
 [[grammar]]
 name = "rangerrc"
-source = { git = "https://github.com/사용자이름/tree-sitter-rangerrc", rev = "main" } 
+source = { git = "https://github.com/tohichoi/tree-sitter-rangerrc", rev = "main" } 
 # source = { path = "/home/x/Workspace/tree-sitter-rangerrc" } # 실제 작업하신 절대 경로 입력
 
 [[language]]
@@ -37,5 +37,9 @@ cp highlights.scm ~/.config/helix/runtime/queries/rangerrc
 ## build helix grammar
 
 ```shell
+hx --grammar fetch
 hx --grammar build
 ```
+
+## trouble shooting
+
