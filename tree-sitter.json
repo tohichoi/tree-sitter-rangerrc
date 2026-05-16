@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "rangerrc",
+      "camelcase": "RangerRc",
+      "title": "RangerRc",
+      "scope": "source.rangerrc",
+      "file-types": [
+        "rc.conf"
+      ],
+      "injection-regex": "^rangerrc$",
+      "class-name": "TreeSitterRangerRc"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter parser for ranger rc.conf",
+    "authors": [
+      {
+        "name": "Mike Choi",
+        "url": "https://github.com/tohichoi"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tohichoi/tree-sitter-rangerrc",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
