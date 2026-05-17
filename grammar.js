@@ -13,7 +13,11 @@ module.exports = grammar({
     ),
 
     // 주석 규칙
-    comment: $ => /#.*/,
+    comment: $ => token(seq(
+      repeat(choice(' ', '\t')),
+      '#',
+      /[^\n]*/
+    )),
 
     // 명령어 분류 (인자 1개짜리와 2개짜리 그룹핑)
     _command_lines: $ => seq(
