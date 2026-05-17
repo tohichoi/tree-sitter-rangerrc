@@ -27,36 +27,8 @@
       ]
     },
     "comment": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": " "
-                },
-                {
-                  "type": "STRING",
-                  "value": "\t"
-                }
-              ]
-            }
-          },
-          {
-            "type": "STRING",
-            "value": "#"
-          },
-          {
-            "type": "PATTERN",
-            "value": "[^\\n]*"
-          }
-        ]
-      }
+      "type": "PATTERN",
+      "value": "#[^\\n]*"
     },
     "_command_lines": {
       "type": "SEQ",
@@ -73,10 +45,6 @@
               "name": "double_arg_command"
             }
           ]
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\s*"
         },
         {
           "type": "STRING",
@@ -110,12 +78,16 @@
           "value": "keyword"
         },
         {
-          "type": "PATTERN",
-          "value": "\\s+"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "argument_value"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "argument_value"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -177,20 +149,20 @@
           "value": "keyword"
         },
         {
-          "type": "PATTERN",
-          "value": "\\s+"
-        },
-        {
           "type": "SYMBOL",
           "name": "argument_key"
         },
         {
-          "type": "PATTERN",
-          "value": "\\s+"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "argument_value"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "argument_value"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -206,7 +178,7 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[ \\t]"
     }
   ],
   "conflicts": [],

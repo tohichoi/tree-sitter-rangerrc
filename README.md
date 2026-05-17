@@ -34,6 +34,9 @@ Build
 npm init -y
 npm install --save-dev tree-sitter-cli
 npx tree-sitter generate
+
+# You can verify the syntax highlighting directly in your terminal:
+npx tree-sitter highlight rc.conf | less -R
 ```
 
 Create or modify ~/.config/helix/languages.toml
@@ -97,7 +100,6 @@ During the integration of this grammar with Helix (specifically v25.07), I encou
 * **Solution:** Force the CLI to generate the parser with ABI 14.
 ```bash
 npx tree-sitter generate --abi 14
-
 ```
 
 
@@ -115,7 +117,6 @@ name = "rangerrc"
 name = "rangerrc"
 scope = "source.rangerrc"
 grammar = "rangerrc"
-
 ```
 
 
@@ -131,11 +132,30 @@ rm -rf ~/.cache/helix/grammars
 rm -rf ~/.config/helix/runtime/grammars/sources/rangerrc
 rm -f ~/.config/helix/runtime/grammars/rangerrc.so
 rm -rf ~/.config/helix/runtime/queries/rangerrc
-
 ```
 
 
 *(After clearing, run `hx --grammar fetch` and `hx --grammar build` again).*
 
+4. hx --grammar fetch does not pull the latest GitHub changes
+Symptom: You pushed new changes (like updated grammar.js or src/parser.c) to your GitHub repository, but running hx --grammar fetch ignores the updates and keeps using the old version.
+
+Cause: If the rev property in your languages.toml is set to a static branch name like "main", Helix often assumes it already has the downloaded version cached and will skip re-fetching.
+
+Solution: Change the rev value to the exact latest 7-character commit hash.
+
+```toml
+[[grammar]]
+name = "rangerrc"
+source = { git = "[https://github.com/tohichoi/tree-sitter-rangerrc](https://github.com/tohichoi/tree-sitter-rangerrc)", rev = "8f3a1b2" } # Use the latest commit hash here!
+```
+
+Then, clear the local sources and rebuild:
+
+```shell
+rm -rf ~/.config/helix/runtime/grammars/sources/rangerrc
+hx --grammar fetch
+hx --grammar build
+```
 
 ---
